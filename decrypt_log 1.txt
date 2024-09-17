@@ -1,0 +1,1167 @@
+p10: 490
+k1: 216
+k2: 149
+decrypting byte #0 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #1 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #2 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #3 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #4 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #5 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #6 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #7 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #8 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #9 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #10 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #11 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #12 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #13 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #14 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #15 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #16 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #17 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #18 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #19 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #20 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #21 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #22 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #23 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #24 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #25 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #26 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #27 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #28 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #29 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #30 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #31 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #32 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #33 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #34 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #35 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #36 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #37 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #38 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #39 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #40 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #41 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #42 with value 66
+ip: 129
+fk1: 23
+fk2: 103
+decrypting byte #43 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #44 with value 110
+ip: 227
+fk1: 54
+fk2: 134
+decrypting byte #45 with value 231
+ip: 245
+fk1: 88
+fk2: 232
+decrypting byte #46 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #47 with value 95
+ip: 207
+fk1: 253
+fk2: 237
+decrypting byte #48 with value 218
+ip: 155
+fk1: 180
+fk2: 164
+decrypting byte #49 with value 26
+ip: 11
+fk1: 189
+fk2: 173
+decrypting byte #50 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #51 with value 218
+ip: 155
+fk1: 180
+fk2: 164
+decrypting byte #52 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #53 with value 168
+ip: 50
+fk1: 33
+fk2: 161
+decrypting byte #54 with value 207
+ip: 215
+fk1: 121
+fk2: 169
+decrypting byte #55 with value 218
+ip: 155
+fk1: 180
+fk2: 164
+decrypting byte #56 with value 138
+ip: 19
+fk1: 57
+fk2: 233
+decrypting byte #57 with value 159
+ip: 95
+fk1: 244
+fk2: 228
+decrypting byte #58 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #59 with value 131
+ip: 21
+fk1: 86
+fk2: 230
+decrypting byte #60 with value 218
+ip: 155
+fk1: 180
+fk2: 164
+decrypting byte #61 with value 175
+ip: 119
+fk1: 115
+fk2: 227
+decrypting byte #62 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #63 with value 231
+ip: 245
+fk1: 88
+fk2: 232
+decrypting byte #64 with value 137
+ip: 22
+fk1: 98
+fk2: 162
+decrypting byte #65 with value 218
+ip: 155
+fk1: 180
+fk2: 164
+decrypting byte #66 with value 231
+ip: 245
+fk1: 88
+fk2: 232
+decrypting byte #67 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #68 with value 218
+ip: 155
+fk1: 180
+fk2: 164
+decrypting byte #69 with value 231
+ip: 245
+fk1: 88
+fk2: 232
+decrypting byte #70 with value 159
+ip: 95
+fk1: 244
+fk2: 228
+decrypting byte #71 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #72 with value 231
+ip: 245
+fk1: 88
+fk2: 232
+decrypting byte #73 with value 137
+ip: 22
+fk1: 98
+fk2: 162
+decrypting byte #74 with value 159
+ip: 95
+fk1: 244
+fk2: 228
+decrypting byte #75 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #76 with value 41
+ip: 38
+fk1: 97
+fk2: 225
+decrypting byte #77 with value 194
+ip: 145
+fk1: 22
+fk2: 166
+decrypting byte #78 with value 207
+ip: 215
+fk1: 121
+fk2: 169
+decrypting byte #79 with value 26
+ip: 11
+fk1: 189
+fk2: 173
+decrypting byte #80 with value 231
+ip: 245
+fk1: 88
+fk2: 232
+decrypting byte #81 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #82 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #83 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #84 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #85 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #86 with value 210
+ip: 153
+fk1: 151
+fk2: 231
+decrypting byte #87 with value 255
+ip: 255
+fk1: 254
+fk2: 174
+decrypting byte #88 with value 26
+ip: 11
+fk1: 189
+fk2: 173
+decrypting byte #89 with value 231
+ip: 245
+fk1: 88
+fk2: 232
+decrypting byte #90 with value 159
+ip: 95
+fk1: 244
+fk2: 228
+decrypting byte #91 with value 207
+ip: 215
+fk1: 121
+fk2: 169
+decrypting byte #92 with value 59
+ip: 47
+fk1: 243
+fk2: 99
+decrypting byte #93 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #94 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #95 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #96 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #97 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #98 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #99 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #100 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #101 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #102 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #103 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #104 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #105 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #106 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #107 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #108 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #109 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #110 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #111 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #112 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #113 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #114 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #115 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #116 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #117 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #118 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #119 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #120 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #121 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #122 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #123 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #124 with value 66
+ip: 129
+fk1: 23
+fk2: 103
+decrypting byte #125 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #126 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #127 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #128 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #129 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #130 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #131 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #132 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #133 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #134 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #135 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #136 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #137 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #138 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #139 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #140 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #141 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #142 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #143 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #144 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #145 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #146 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #147 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #148 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #149 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #150 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #151 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #152 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #153 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #154 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #155 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #156 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #157 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #158 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #159 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #160 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #161 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #162 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #163 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #164 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #165 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #166 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #167 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #168 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #169 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #170 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #171 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #172 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #173 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #174 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #175 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #176 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #177 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #178 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #179 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #180 with value 200
+ip: 146
+fk1: 43
+fk2: 203
+decrypting byte #181 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #182 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #183 with value 200
+ip: 146
+fk1: 43
+fk2: 203
+decrypting byte #184 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #185 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #186 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #187 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #188 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #189 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #190 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #191 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #192 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #193 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #194 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #195 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #196 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #197 with value 221
+ip: 222
+fk1: 226
+fk2: 34
+decrypting byte #198 with value 210
+ip: 153
+fk1: 151
+fk2: 231
+decrypting byte #199 with value 210
+ip: 153
+fk1: 151
+fk2: 231
+decrypting byte #200 with value 82
+ip: 137
+fk1: 150
+fk2: 38
+decrypting byte #201 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #202 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #203 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #204 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #205 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #206 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #207 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #208 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #209 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #210 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #211 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #212 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #213 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #214 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #215 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #216 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #217 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #218 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #219 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #220 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #221 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #222 with value 221
+ip: 222
+fk1: 226
+fk2: 34
+decrypting byte #223 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #224 with value 188
+ip: 122
+fk1: 175
+fk2: 207
+decrypting byte #225 with value 82
+ip: 137
+fk1: 150
+fk2: 38
+decrypting byte #226 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #227 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #228 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #229 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #230 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #231 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #232 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #233 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #234 with value 82
+ip: 137
+fk1: 150
+fk2: 38
+decrypting byte #235 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #236 with value 66
+ip: 129
+fk1: 23
+fk2: 103
+decrypting byte #237 with value 245
+ip: 252
+fk1: 202
+fk2: 202
+decrypting byte #238 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #239 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #240 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #241 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #242 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #243 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #244 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #245 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #246 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #247 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #248 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #249 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #250 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #251 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #252 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #253 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #254 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #255 with value 157
+ip: 94
+fk1: 234
+fk2: 234
+decrypting byte #256 with value 157
+ip: 94
+fk1: 234
+fk2: 234
+decrypting byte #257 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #258 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #259 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #260 with value 55
+ip: 109
+fk1: 214
+fk2: 102
+decrypting byte #261 with value 95
+ip: 207
+fk1: 253
+fk2: 237
+decrypting byte #262 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #263 with value 157
+ip: 94
+fk1: 234
+fk2: 234
+decrypting byte #264 with value 214
+ip: 217
+fk1: 147
+fk2: 3
+decrypting byte #265 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #266 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #267 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #268 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #269 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #270 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #271 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #272 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #273 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #274 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #275 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #276 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #277 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #278 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #279 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #280 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #281 with value 157
+ip: 94
+fk1: 234
+fk2: 234
+decrypting byte #282 with value 157
+ip: 94
+fk1: 234
+fk2: 234
+decrypting byte #283 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #284 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #285 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #286 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #287 with value 19
+ip: 13
+fk1: 208
+fk2: 32
+decrypting byte #288 with value 157
+ip: 94
+fk1: 234
+fk2: 234
+decrypting byte #289 with value 157
+ip: 94
+fk1: 234
+fk2: 234
+decrypting byte #290 with value 214
+ip: 217
+fk1: 147
+fk2: 3
