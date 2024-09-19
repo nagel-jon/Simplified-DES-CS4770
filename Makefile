@@ -10,7 +10,7 @@ CXXFLAGS = -Wall -g
 TARGET = decrypter
 
 # Source files
-SRCS = main.cc
+SRCS = main.cc decrypt.cc
 
 # Object files
 OBJS = $(SRCS:.cc=.o)
