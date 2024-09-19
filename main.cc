@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
     // Global Variables
     bool debug = true;
     vector<unsigned char> encrypted_vector;
-    bitset<10> key = 0b1111100000;
+    bitset<10> key = 0b0111101010;
 
     if (debug) {
         cout << "Starting: " << argv[0] << " in DEBUG mode\n" << endl;
@@ -22,11 +22,11 @@ int main(int argc, char* argv[]) {
 
     // Print encrypted string and key if Debugging
     if (debug) {
-        cout << "Encrypted String: " << endl;
-        for (unsigned char byte : encrypted_vector) {
-            cout << static_cast<int>(byte) << " ";
-        }
-        cout << endl;
+        // cout << "Encrypted String: " << endl;
+        // for (unsigned char byte : encrypted_vector) {
+        //     cout << static_cast<int>(byte) << " ";
+        // }
+        // cout << endl;
     }
 
     // Decrypt the string

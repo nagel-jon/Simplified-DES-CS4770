@@ -41,29 +41,85 @@ void DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>
         cout << "Key: " << key << endl;
     }
 
+    //Generate keys
     keygen(key, k1, k2, debug);
+    if (debug) {
+        cout << "Keygen Complete" << endl;
+        cout << "Key 1: " << k1 << endl;
+        cout << "Key 1 (int): " << k1.to_ulong() << endl;
+        cout << "Key 2: " << k2 << endl;
+        cout << "Key 2 (int): " << k2.to_ulong() << endl;
+    }
 
-    // Do work here
+    //Do Initial Permutation (IP)
+    if (debug) {
+        cout << "Starting Loop Over Encrypted bytes" << endl;
+    }
+
+
+    int i = 0;  //print which byte    
+    for (unsigned char byte : encrypted_vector) {
+        bitset<8> encrypted_byte = byte;
+        if (debug) {
+            cout << "Byte #" << i << " ";
+            cout << static_cast<int>(encrypted_byte.to_ulong()) << endl;
+            cout << "Encrypted Byte: " << encrypted_byte << endl;
+            i++;
+
+        }
+        //Perform Initial Permutation
+        bitset<8> ip_byte = 0b00000000;
+        // ip_byte[7] = encrypted_byte[1];
+        // ip_byte[6] = encrypted_byte[5];
+        // ip_byte[5] = encrypted_byte[2];
+        // ip_byte[4] = encrypted_byte[0];
+        // ip_byte[3] = encrypted_byte[3];
+        // ip_byte[2] = encrypted_byte[7];
+        // ip_byte[1] = encrypted_byte[4];
+        // ip_byte[0] = encrypted_byte[6];
+
+        if (debug) {
+            cout << "Initial Permutation: " << ip_byte << endl;
+        }
+
+    }
+
+    //Loop through each byte in the encrypted vector
+    //During loop need to perform the following operations:
+    //1. Perform Initial Permutation
+    //2. Perform Fiestal Function (round 1)
+        //2a.  Perform Expansion Permutation
+        //3b.  Perform Key Mixing
+        //3c.  Perform S-Box Substitution
+        //3d.  Perform Permutation
+    //3. Perform Nibble Swap
+    //4. Perform Fiestal Function (round 2)
+    //5. Perform Inverse Initial Permutation
+    //6. Output decrypted byte
+
+
 }
 
 void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug) {
     if (debug) {
         cout << "Keygen" << endl;
         cout << "Initial Key: " << key << endl;
+        cout << "Initial Key (int): " << key.to_ulong() << endl;
         cout << "Performing P10 Permutation" << endl;
     }
     // Do P10 permutation
     bitset<10> key_permuted = 0b0000000000;
-    key_permuted[0] = key[2];
-    key_permuted[1] = key[4];
-    key_permuted[2] = key[1];
-    key_permuted[3] = key[6];
-    key_permuted[4] = key[3];
-    key_permuted[5] = key[9];
-    key_permuted[6] = key[0];
+    key_permuted[9] = key[7];
+    key_permuted[8] = key[5];
     key_permuted[7] = key[8];
-    key_permuted[8] = key[7];
-    key_permuted[9] = key[5];
+    key_permuted[6] = key[3];
+    key_permuted[5] = key[6];
+    key_permuted[4] = key[0];
+    key_permuted[3] = key[9];
+    key_permuted[2] = key[1];
+    key_permuted[1] = key[2];
+    key_permuted[0] = key[4];
+
 
     if (debug) {
         cout << "Permuted Key: " << key_permuted << endl;
@@ -108,14 +164,14 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
     }
 
     // Do P8 Permutation to get K1
-    key1[0] = keyhalf_1[2];
-    key1[1] = keyhalf_1[4];
-    key1[2] = keyhalf_1[1];
-    key1[3] = keyhalf_1[3];
-    key1[4] = keyhalf_2[2];
-    key1[5] = keyhalf_2[4];
-    key1[6] = keyhalf_2[1];
-    key1[7] = keyhalf_2[3];
+    key1[7] = keyhalf_2[4];
+    key1[6] = keyhalf_1[2];
+    key1[5] = keyhalf_2[3];
+    key1[4] = keyhalf_1[3];
+    key1[3] = keyhalf_2[2];
+    key1[2] = keyhalf_1[0];
+    key1[1] = keyhalf_2[0];
+    key1[0] = keyhalf_2[1];
 
     if (debug) {
         cout << "Key 1: " << key1 << endl;
@@ -150,14 +206,15 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
     keyhalf_2[0] = temp[0];
 
     // Do P8 Permutation to get K2
-    key2[0] = keyhalf_1[2];
-    key2[1] = keyhalf_1[4];
-    key2[2] = keyhalf_1[1];
-    key2[3] = keyhalf_1[3];
-    key2[4] = keyhalf_2[2];
-    key2[5] = keyhalf_2[4];
-    key2[6] = keyhalf_2[1];
-    key2[7] = keyhalf_2[3];
+    key2[7] = keyhalf_2[4];
+    key2[6] = keyhalf_1[2];
+    key2[5] = keyhalf_2[3];
+    key2[4] = keyhalf_1[3];
+    key2[3] = keyhalf_2[2];
+    key2[2] = keyhalf_1[0];
+    key2[1] = keyhalf_2[0];
+    key2[0] = keyhalf_2[1];
+
 
     if (debug) {
         cout << "LS (2 of 2) Performed" << endl;
@@ -165,4 +222,14 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
         cout << "Key Half 2: " << keyhalf_2 << endl;
         cout << "Key 2: " << key2 << endl;
     }
+}
+
+
+bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool debug) {
+    if (debug) {
+        cout << "Fiestal Function" << endl;
+        cout << "Byte: " << byte << endl;
+        cout << "Key: " << key << endl;
+    }
+
 }
