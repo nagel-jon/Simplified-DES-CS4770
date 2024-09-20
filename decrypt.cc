@@ -17,7 +17,7 @@ void check_args(int argc, char* argv[], bool debug) {
     }
 
     string key = argv[1];
-    if (key.size() != 4) {
+    if (key.size() != 5) {
         cerr << "Key must be 4 characters long" << endl;
         exit(1);
     }
@@ -61,26 +61,30 @@ void DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>
     for (unsigned char byte : encrypted_vector) {
         bitset<8> encrypted_byte = byte;
         if (debug) {
-            cout << "Byte #" << i << " ";
-            cout << static_cast<int>(encrypted_byte.to_ulong()) << endl;
-            cout << "Encrypted Byte: " << encrypted_byte << endl;
+            // cout << "Byte #" << i << " ";
+            // cout << static_cast<int>(encrypted_byte.to_ulong()) << endl;
+            //cout << "Encrypted Byte: " << encrypted_byte << endl;
             i++;
 
         }
-        //Perform Initial Permutation
+
+        // Perform Initial Permutation
         bitset<8> ip_byte = 0b00000000;
-        // ip_byte[7] = encrypted_byte[1];
-        // ip_byte[6] = encrypted_byte[5];
-        // ip_byte[5] = encrypted_byte[2];
-        // ip_byte[4] = encrypted_byte[0];
-        // ip_byte[3] = encrypted_byte[3];
-        // ip_byte[2] = encrypted_byte[7];
-        // ip_byte[1] = encrypted_byte[4];
-        // ip_byte[0] = encrypted_byte[6];
+        ip_byte[7] = encrypted_byte[6];
+        ip_byte[6] = encrypted_byte[2];
+        ip_byte[5] = encrypted_byte[5];
+        ip_byte[4] = encrypted_byte[7];
+        ip_byte[3] = encrypted_byte[4];
+        ip_byte[2] = encrypted_byte[0];
+        ip_byte[1] = encrypted_byte[3];
+        ip_byte[0] = encrypted_byte[1];
 
         if (debug) {
-            cout << "Initial Permutation: " << ip_byte << endl;
+            //cout << "Initial Permutation: " << ip_byte << endl;
         }
+
+        // Perform Fiestal Function (round 1)
+        bitset<8> fiestal_byte = fiestal(ip_byte, k2, debug);
 
     }
 
@@ -231,5 +235,37 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
         cout << "Byte: " << byte << endl;
         cout << "Key: " << key << endl;
     }
+
+    // Perform Expansion Permutation
+    bitset<8> expanded_byte = 0b00000000;
+    expanded_byte[7] = byte[4];
+    expanded_byte[6] = byte[7];
+    expanded_byte[5] = byte[6];
+    expanded_byte[4] = byte[5];
+    expanded_byte[3] = byte[6];
+    expanded_byte[2] = byte[5];
+    expanded_byte[1] = byte[4];
+    expanded_byte[0] = byte[7];
+
+    if (debug)
+    {
+        cout << "Expanded Byte: " << expanded_byte << endl;
+    }
+
+
+
+    // Perform Key Mixing
+    bitset<8> mixed_byte = expanded_byte ^ key;
+
+    if (debug) {
+        cout << "Mixed Byte: " << mixed_byte << endl;
+    }
+
+    // Perform S-Box Substitution
+    //idk how this works yet
+
+    // Perform Permutation
+
+
 
 }

@@ -9,7 +9,6 @@ int main(int argc, char* argv[]) {
     // Global Variables
     bool debug = true;
     vector<unsigned char> encrypted_vector;
-    bitset<10> key = 0b0111101010;
 
     if (debug) {
         cout << "Starting: " << argv[0] << " in DEBUG mode\n" << endl;
@@ -28,6 +27,10 @@ int main(int argc, char* argv[]) {
         // }
         // cout << endl;
     }
+
+    //Cast Key to bitset
+    unsigned int hexkey = static_cast<unsigned int>(stoi(argv[1], nullptr, 16));
+    bitset<10> key(hexkey & 0x3FF);
 
     // Decrypt the string
     DES_decrypt(encrypted_vector, key, debug);
