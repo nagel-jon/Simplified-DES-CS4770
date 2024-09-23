@@ -257,6 +257,11 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
     // Perform Key Mixing
     //Break out into named bits and do XOR
 
+    if (debug) {
+        cout << "XORing Expanded Byte with Key" << endl;
+        cout << "Expanded Byte: " << expanded_byte << endl;
+        cout << "Key: " << key << endl;
+    }
 
 
     // Break mixed byte into named bits
@@ -292,6 +297,10 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
 
     //Perform S-Box Substitution
 
+    if (debug) {
+        cout << "XOR Result: " << p_0_0 << p_0_1 << p_0_2 << p_0_3 << p_1_0 << p_1_1 << p_1_2 << p_1_3 << endl;
+    }
+
     //First make 2 bit numbers 1,4 make row, 2,3 make column
 
     bitset<2> s0_row;
@@ -302,19 +311,126 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
     s0_row[1] = p_0_0[0];
     s0_row[0] = p_0_3[0];
 
+    s0_col[1] = p_0_1[0];
+    s0_col[0] = p_0_2[0];
+
+    s1_row[1] = p_1_0[0];
+    s1_row[0] = p_1_3[0];
+
+    s1_col[1] = p_1_1[0];
+    s1_col[0] = p_1_2[0];
+
+
     if (debug) {
         cout << "S0 Row: " << s0_row << endl;
+        cout << "S0 Col: " << s0_col << endl;
+        cout << "S1 Row: " << s1_row << endl;
+        cout << "S1 Col: " << s1_col << endl;
+    }
+
+    //Perform S-Box Substitution
+    bitset<2> s0_result;
+    bitset<2> s1_result;
+
+    if (debug) {
+        cout << "Performing S-Box Substitution" << endl;
+    }
+
+    //S0
+    if (s0_col == 0) {
+        if (s0_row == 0) { s0_result = 0b01; }
+        else if (s0_row == 1) { s0_result = 0b11; }
+        else if (s0_row == 2) { s0_result = 0b00; }
+        else if (s0_row == 3) { s0_result = 0b11; }
+    }
+    else if (s0_col == 1) {
+        if (s0_row == 0) { s0_result = 0b00; }
+        else if (s0_row == 1) { s0_result = 0b10; }
+        else if (s0_row == 2) { s0_result = 0b10; }
+        else if (s0_row == 3) { s0_result = 0b01; }
+    }
+    else if (s0_col == 2) {
+        if (s0_row == 0) { s0_result = 0b11; }
+        else if (s0_row == 1) { s0_result = 0b01; }
+        else if (s0_row == 2) { s0_result = 0b01; }
+        else if (s0_row == 3) { s0_result = 0b11; }
+    }
+    else if (s0_col == 3) {
+        if (s0_row == 0) { s0_result = 0b10; }
+        else if (s0_row == 1) { s0_result = 0b00; }
+        else if (s0_row == 2) { s0_result = 0b11; }
+        else if (s0_row == 3) { s0_result = 0b10; }
+    }
+    else {
+        cerr << "Error: S-Box Substitution (S0)" << endl;
+        exit(1);
+    }
+
+    //S1
+
+    if (s1_col == 0) {
+        if (s1_row == 0) { s1_result = 0b00; }
+        else if (s1_row == 1) { s1_result = 0b10; }
+        else if (s1_row == 2) { s1_result = 0b11; }
+        else if (s1_row == 3) { s1_result = 0b10; }
+    }
+    else if (s1_col == 1) {
+        if (s1_row == 0) { s1_result = 0b01; }
+        else if (s1_row == 1) { s1_result = 0b00; }
+        else if (s1_row == 2) { s1_result = 0b00; }
+        else if (s1_row == 3) { s1_result = 0b01; }
+    }
+    else if (s1_col == 2) {
+        if (s1_row == 0) { s1_result = 0b10; }
+        else if (s1_row == 1) { s1_result = 0b01; }
+        else if (s1_row == 2) { s1_result = 0b01; }
+        else if (s1_row == 3) { s1_result = 0b00; }
+    }
+    else if (s1_col == 3) {
+        if (s1_row == 0) { s1_result = 0b11; }
+        else if (s1_row == 1) { s1_result = 0b11; }
+        else if (s1_row == 2) { s1_result = 0b00; }
+        else if (s1_row == 3) { s1_result = 0b11; }
+    }
+    else {
+        cerr << "Error: S-Box Substitution (S1)" << endl;
+        exit(1);
+    }
+
+    if (debug) {
+        cout << "S-Box Substitution Complete" << endl;
+        cout << "S0 Result: " << s0_result << endl;
+        cout << "S1 Result: " << s1_result << endl;
     }
 
 
+    //Permutation Step
 
+    //Combine S0 and S1 into 4 bits
+    //Do P4 Permutation
+    bitset<4> sbox_result = 0b0000;
+    sbox_result[0] = s1_result[0];
+    sbox_result[1] = s1_result[1];
+    sbox_result[2] = s0_result[0];
+    sbox_result[3] = s0_result[1];
 
+    if (debug) {
+        cout << "S-Box Result: " << sbox_result << endl;
+        cout << "Performing P4 Permutation" << endl;
+    }
 
+    bitset<4> p4_result = 0b0000;
 
+    p4_result[3] = sbox_result[2];
+    p4_result[2] = sbox_result[0];
+    p4_result[1] = sbox_result[1];
+    p4_result[0] = sbox_result[3];
 
+    if (debug) {
+        cout << "P4 Result: " << p4_result << endl;
+    }
 
-    // Perform Permutation
-
+    //Comb
 
 
 }
