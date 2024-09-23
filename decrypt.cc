@@ -255,14 +255,63 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
 
 
     // Perform Key Mixing
-    bitset<8> mixed_byte = expanded_byte ^ key;
+    //Break out into named bits and do XOR
+
+
+
+    // Break mixed byte into named bits
+    bitset<1> n1(expanded_byte[0] ? 1 : 0);
+    bitset<1> n2(expanded_byte[1] ? 1 : 0);
+    bitset<1> n3(expanded_byte[2] ? 1 : 0);
+    bitset<1> n4(expanded_byte[3] ? 1 : 0);
+    bitset<1> n5(expanded_byte[4] ? 1 : 0);
+    bitset<1> n6(expanded_byte[5] ? 1 : 0);
+    bitset<1> n7(expanded_byte[6] ? 1 : 0);
+    bitset<1> n8(expanded_byte[7] ? 1 : 0);
+
+    //Break key into named bits
+    bitset<1> k11(key[0] ? 1 : 0);
+    bitset<1> k12(key[1] ? 1 : 0);
+    bitset<1> k13(key[2] ? 1 : 0);
+    bitset<1> k14(key[3] ? 1 : 0);
+    bitset<1> k15(key[4] ? 1 : 0);
+    bitset<1> k16(key[5] ? 1 : 0);
+    bitset<1> k17(key[6] ? 1 : 0);
+    bitset<1> k18(key[7] ? 1 : 0);
+
+
+    // Perform XOR
+    bitset<1> p_0_0 = n4 ^ k11;
+    bitset<1> p_0_1 = n1 ^ k12;
+    bitset<1> p_0_2 = n2 ^ k13;
+    bitset<1> p_0_3 = n3 ^ k14;
+    bitset<1> p_1_0 = n2 ^ k15;
+    bitset<1> p_1_1 = n3 ^ k16;
+    bitset<1> p_1_2 = n4 ^ k17;
+    bitset<1> p_1_3 = n1 ^ k18;
+
+    //Perform S-Box Substitution
+
+    //First make 2 bit numbers 1,4 make row, 2,3 make column
+
+    bitset<2> s0_row;
+    bitset<2> s0_col;
+    bitset<2> s1_row;
+    bitset<2> s1_col;
+
+    s0_row[1] = p_0_0[0];
+    s0_row[0] = p_0_3[0];
 
     if (debug) {
-        cout << "Mixed Byte: " << mixed_byte << endl;
+        cout << "S0 Row: " << s0_row << endl;
     }
 
-    // Perform S-Box Substitution
-    //idk how this works yet
+
+
+
+
+
+
 
     // Perform Permutation
 
