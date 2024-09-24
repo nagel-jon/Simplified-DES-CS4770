@@ -18,7 +18,7 @@ void check_args(int argc, char* argv[], bool debug) {
 
     string key = argv[1];
     if (key.size() != 5) {
-        cerr << "Key must be 4 characters long" << endl;
+        cerr << "Key must be 5 characters long" << endl;
         exit(1);
     }
 }
@@ -85,6 +85,46 @@ void DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>
 
         // Perform Fiestal Function (round 1)
         bitset<8> fiestal_byte = fiestal(ip_byte, k2, debug);
+
+        // Perform Nibble Swap
+        bitset<8> nibble_swap_byte = 0b00000000;
+        nibble_swap_byte[7] = fiestal_byte[3];
+        nibble_swap_byte[6] = fiestal_byte[2];
+        nibble_swap_byte[5] = fiestal_byte[1];
+        nibble_swap_byte[4] = fiestal_byte[0];
+        nibble_swap_byte[3] = ip_byte[3];
+        nibble_swap_byte[2] = ip_byte[2];
+        nibble_swap_byte[1] = ip_byte[1];
+        nibble_swap_byte[0] = ip_byte[0];
+
+        if (debug) {
+            //cout << "Nibble Swap: " << nibble_swap_byte << endl;
+        }
+
+        // Perform Fiestal Function (round 2)
+        bitset<8> fiestal_byte2 = fiestal(nibble_swap_byte, k1, debug);
+
+        // Perform Inverse Initial Permutation
+        bitset<8> inverse_ip_byte = 0b00000000;
+        inverse_ip_byte[7] = fiestal_byte2[3];
+        inverse_ip_byte[6] = fiestal_byte2[2];
+        inverse_ip_byte[5] = fiestal_byte2[1];
+        inverse_ip_byte[4] = fiestal_byte2[0];
+        inverse_ip_byte[3] = nibble_swap_byte[3];
+        inverse_ip_byte[2] = nibble_swap_byte[2];
+        inverse_ip_byte[1] = nibble_swap_byte[1];
+        inverse_ip_byte[0] = nibble_swap_byte[0];
+
+        if (debug) {
+            //cout << "Inverse Initial Permutation: " << inverse_ip_byte << endl;
+        }
+
+        cout << static_cast<char>(inverse_ip_byte.to_ulong());
+
+
+
+
+
 
     }
 
@@ -430,7 +470,10 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
         cout << "P4 Result: " << p4_result << endl;
     }
 
-    //Comb
+
+
+
+
 
 
 }

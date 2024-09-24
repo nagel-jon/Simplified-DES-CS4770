@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     // Global Variables
-    bool debug = true;
+    bool debug = false;
     vector<unsigned char> encrypted_vector;
 
     if (debug) {
@@ -34,6 +34,8 @@ int main(int argc, char* argv[]) {
 
     // Decrypt the string
     DES_decrypt(encrypted_vector, key, debug);
+
+
 
     return 0;
 }
