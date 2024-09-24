@@ -15,7 +15,6 @@ void check_args(int argc, char* argv[], bool debug) {
         cerr << "Usage: " << argv[0] << " <key>" << endl;
         exit(1);
     }
-
     string key = argv[1];
     if (key.size() != 5) {
         cerr << "Key must be 5 characters long" << endl;
@@ -39,7 +38,8 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
     bitset<8> k1 = 0b00000000;
     bitset<8> k2 = 0b00000000;
     if (debug) {
-        cout << "Key: " << key << endl;
+        cout << "Starting DES Decryption" << endl;
+        cout << "Key: " << key << endl << endl;
     }
 
     //Generate keys
@@ -143,10 +143,10 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
 
 void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug) {
     if (debug) {
-        cout << "Keygen" << endl;
-        cout << "Initial Key: " << key << endl;
-        cout << "Initial Key (int): " << key.to_ulong() << endl;
-        cout << "Performing P10 Permutation" << endl;
+        cout << "Starting Keygen" << endl;
+        // cout << "Initial Key: " << key << endl;
+        // cout << "Initial Key (int): " << key.to_ulong() << endl;
+        cout << "Performing P10 Permutation" << endl << endl;
     }
     // Do P10 permutation
     bitset<10> key_permuted = 0b0000000000;
@@ -163,7 +163,8 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
 
 
     if (debug) {
-        cout << "Permuted Key: " << key_permuted << endl;
+        cout << "Before Permutation: " << endl << key << endl;
+        cout << "After Permutation: " << endl << key_permuted << endl;
         cout << "Splitting into two 5 bit halves" << endl;
     }
 
