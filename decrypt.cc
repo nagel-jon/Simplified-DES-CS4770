@@ -34,7 +34,8 @@ vector<unsigned char> get_decrypt_string(const string& filename, bool debug) {
     return fileContent;
 }
 
-void DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>& key, bool debug) {
+vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>& key, bool debug) {
+    vector<unsigned char> decrypted_vector;
     bitset<8> k1 = 0b00000000;
     bitset<8> k2 = 0b00000000;
     if (debug) {
@@ -119,14 +120,10 @@ void DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>
             //cout << "Inverse Initial Permutation: " << inverse_ip_byte << endl;
         }
 
-        cout << static_cast<char>(inverse_ip_byte.to_ulong());
-
-
-
-
-
+        decrypted_vector.push_back(static_cast<unsigned char>(inverse_ip_byte.to_ullong()));
 
     }
+    return decrypted_vector;
 
     //Loop through each byte in the encrypted vector
     //During loop need to perform the following operations:
