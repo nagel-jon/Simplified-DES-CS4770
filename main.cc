@@ -19,18 +19,12 @@ int main(int argc, char* argv[]) {
     // Open input file
     encrypted_vector = get_decrypt_string("decrypt_in 1.txt", debug);
 
-    // Print encrypted string and key if Debugging
-    if (debug) {
-        // cout << "Encrypted String: " << endl;
-        // for (unsigned char byte : encrypted_vector) {
-        //     cout << static_cast<int>(byte) << " ";
-        // }
-        // cout << endl;
-    }
 
     //Cast Key to bitset
     unsigned int hexkey = static_cast<unsigned int>(stoi(argv[1], nullptr, 16));
     bitset<10> key(hexkey & 0x3FF);
+
+
 
     // Decrypt the string
     vector<unsigned char> decrypted_vector;
