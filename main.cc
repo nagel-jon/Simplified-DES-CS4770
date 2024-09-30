@@ -2,6 +2,7 @@
 #include <iostream>
 #include <bitset>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -28,7 +29,8 @@ int main(int argc, char* argv[]) {
 
     // Decrypt the string
     vector<unsigned char> decrypted_vector;
-    decrypted_vector = DES_decrypt(encrypted_vector, key, debug);
+    vector<int> nums;
+    decrypted_vector = DES_decrypt(encrypted_vector, key, debug, nums);
 
     //Output decrypted vector
     for (unsigned char byte : decrypted_vector) {
@@ -36,7 +38,18 @@ int main(int argc, char* argv[]) {
         cout << byte;
     }
     cout << endl;
+    ofstream outfile("nums.txt");
+    if (!outfile) {
+        cerr << "Error opening file nums.txt for writing" << endl;
+        return 1;
+    }
 
+    for (unsigned char byte : decrypted_vector) {
+        //cout << byte;
+        cout << byte << " ";
+    }
+
+    outfile.close();
 
 
     return 0;

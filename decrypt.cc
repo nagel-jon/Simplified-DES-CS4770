@@ -49,22 +49,23 @@ std::bitset<8> expand(std::bitset<4> half) {
 std::bitset<8> key_mix(const std::bitset<8>& byte, const std::bitset<8>& key) {
     bitset<8> result = 0b00000000;
 
-    result[7] = byte[4] ^ key[7];
-    result[6] = byte[7] ^ key[6];
-    result[5] = byte[6] ^ key[5];
-    result[4] = byte[5] ^ key[4];
+    result[7] = byte[7] ^ key[7];
+    result[6] = byte[6] ^ key[6];
+    result[5] = byte[5] ^ key[5];
+    result[4] = byte[4] ^ key[4];
     // P[0,0-3] first row - goes into S0
 
-    result[3] = byte[6] ^ key[3];
-    result[2] = byte[5] ^ key[2];
-    result[1] = byte[4] ^ key[1];
-    result[0] = byte[7] ^ key[0];
+    result[3] = byte[3] ^ key[3];
+    result[2] = byte[2] ^ key[2];
+    result[1] = byte[1] ^ key[1];
+    result[0] = byte[0] ^ key[0];
     //P[1,0-3] second row - goes into S1
 
         // Print the results for each bit position
-    // std::cout << "Byte: " << byte << "\n";
-    // std::cout << "Key:  " << key << "\n";
-    // std::cout << "Result: " << result << "\n";
+    std::cout << "Key Mixing" << "\n";
+    std::cout << "Byte: " << byte << "\n";
+    std::cout << "Key:  " << key << "\n";
+    std::cout << "Result: " << result << "\n";
 
     return result;
 }
@@ -79,18 +80,22 @@ std::bitset<4> sbox_sub(std::bitset<8> byte, bool debug) {
     bitset<2> s1_col;
     bitset<2> s1_row;
 
-    s0_col[1] = byte[2];
-    s0_col[0] = byte[1];
-    s0_row[1] = byte[0];
-    s0_row[0] = byte[3];
+    s0_row[1] = byte[7];
+    s0_row[0] = byte[4];
+    s0_col[1] = byte[6];
+    s0_col[0] = byte[5];
 
-    s1_col[1] = byte[6];
-    s1_col[0] = byte[5];
-    s1_row[1] = byte[4];
-    s1_row[0] = byte[7];
+    s1_row[1] = byte[3];
+    s1_row[0] = byte[0];
+    s1_col[1] = byte[2];
+    s1_col[0] = byte[1];
 
     if (debug) {
-        //cout << "Performing S-Box Substitution" << endl;
+        cout << "Performing S-Box Substitution" << endl;
+        cout << "S0 Col: " << s0_col << endl;
+        cout << "S0 Row: " << s0_row << endl;
+        cout << "S1 Col: " << s1_col << endl;
+        cout << "S1 Row: " << s1_row << endl;
     }
 
     //S0
@@ -171,7 +176,7 @@ std::bitset<4> sbox_sub(std::bitset<8> byte, bool debug) {
 
 
 
-vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>& key, bool debug) {
+vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector, const bitset<10>& key, bool debug, vector<int>& nums) {
     vector<unsigned char> decrypted_vector;
     bitset<8> k1 = 0b00000000;
     bitset<8> k2 = 0b00000000;
@@ -228,8 +233,8 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         bitset<8> fiestal_byte = fiestal(ip_byte, k2, debug);
 
         if (debug) {
-            cout << "Fiestal Round 1 Done: " << fiestal_byte << endl;
-            cout << static_cast<int>(fiestal_byte.to_ulong()) << endl;
+            // cout << "Fiestal Round 1 Done: " << fiestal_byte << endl;
+            // cout << "fk1: " << static_cast<int>(fiestal_byte.to_ulong()) << endl;
         }
 
         // Perform Nibble Swap
@@ -247,10 +252,12 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
 
 
         if (debug) {
-            cout << "Nibble Swap Performed" << endl;
-            cout << "Before: " << fiestal_byte << endl;
-            cout << "After: " << nibble_swap_byte << endl;
-            cout << "Nibble Swap: " << static_cast<int>(nibble_swap_byte.to_ulong()) << endl;
+            // cout << "Nibble Swap Performed" << endl;
+            // cout << "Before: " << fiestal_byte << endl;
+            // cout << "After: " << nibble_swap_byte << endl;
+            // cout << "Nibble Swap: " << static_cast<int>(nibble_swap_byte.to_ulong()) << endl;
+            cout << "fk1: " << static_cast<int>(nibble_swap_byte.to_ulong()) << endl;
+            // cout << "---------- [F1 COMPLETE] ----------" << endl << endl;
         }
 
 
@@ -258,45 +265,40 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         // Perform Fiestal Function (round 2)
         bitset<8> fiestal_byte2 = fiestal(nibble_swap_byte, k1, debug);
 
+
+
         if (debug) {
-            cout << "Fiestal Round 2 Done: " << fiestal_byte2 << endl;
-            cout << static_cast<int>(fiestal_byte2.to_ulong()) << endl;
+            // cout << "Fiestal Round 2 Done: " << fiestal_byte2 << endl;
+            cout << "fk2: " << static_cast<int>(fiestal_byte2.to_ulong()) << endl;
         }
 
         // Perform Inverse Initial Permutation
         bitset<8> inverse_ip_byte = 0b00000000;
-        // inverse_ip_byte[7] = fiestal_byte2[3];
-        // inverse_ip_byte[6] = fiestal_byte2[2];
-        // inverse_ip_byte[5] = fiestal_byte2[1];
-        // inverse_ip_byte[4] = fiestal_byte2[0];
-        // inverse_ip_byte[3] = nibble_swap_byte[3];
-        // inverse_ip_byte[2] = nibble_swap_byte[2];
-        // inverse_ip_byte[1] = nibble_swap_byte[1];
-        // inverse_ip_byte[0] = nibble_swap_byte[0];
 
-        inverse_ip_byte[7] = fiestal_byte2[7];
-        inverse_ip_byte[6] = fiestal_byte2[6];
+        inverse_ip_byte[7] = fiestal_byte2[4];
+        inverse_ip_byte[6] = fiestal_byte2[7];
         inverse_ip_byte[5] = fiestal_byte2[5];
-        inverse_ip_byte[4] = fiestal_byte2[4];
-        inverse_ip_byte[3] = nibble_swap_byte[3];
-        inverse_ip_byte[2] = nibble_swap_byte[2];
-        inverse_ip_byte[1] = nibble_swap_byte[1];
-        inverse_ip_byte[0] = nibble_swap_byte[0];
-
+        inverse_ip_byte[4] = fiestal_byte2[3];
+        inverse_ip_byte[3] = fiestal_byte2[1];
+        inverse_ip_byte[2] = fiestal_byte2[6];
+        inverse_ip_byte[1] = fiestal_byte2[0];
+        inverse_ip_byte[0] = fiestal_byte2[2];
 
 
         if (debug) {
-            cout << "Inverse Initial Permutation: " << inverse_ip_byte << endl;
-            cout << "Inverse IP: " << static_cast<int>(inverse_ip_byte.to_ulong()) << endl;
+            // cout << "Inverse Initial Permutation: " << inverse_ip_byte << endl;
+            // cout << "Inverse IP: " << static_cast<int>(inverse_ip_byte.to_ulong()) << endl;
         }
 
         decrypted_vector.push_back(static_cast<unsigned char>(inverse_ip_byte.to_ullong()));
+        nums.push_back(static_cast<int>(inverse_ip_byte.to_ulong()));
+        cerr << inverse_ip_byte.to_ulong() << " ";
 
         if (debug) {
-            cout << "Decrypted Byte: " << static_cast<int>(inverse_ip_byte.to_ulong()) << endl;
-            cout << "Decrypted Byte: " << inverse_ip_byte << endl;
-            cout << endl;
-            cout << "ASCII: " << static_cast<unsigned char>(inverse_ip_byte.to_ullong()) << endl;
+            // cout << "Decrypted Byte: " << static_cast<int>(inverse_ip_byte.to_ulong()) << endl;
+            // cout << "Decrypted Byte: " << inverse_ip_byte << endl;
+            // cout << endl;
+            // cout << "ASCII: " << static_cast<unsigned char>(inverse_ip_byte.to_ullong()) << endl;
         }
 
         cout << endl;
@@ -346,7 +348,7 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
         // cout << "Before Permutation: " << endl << key << endl;
         // cout << "After Permutation: " << endl << key_permuted << endl << endl;
         // cout << "Splitting into two 5 bit halves" << endl;
-        cout << "P10: " << static_cast<int>(key_permuted.to_ulong()) << endl;
+        // cout << "P10: " << static_cast<int>(key_permuted.to_ulong()) << endl;
     }
 
     // Split key into two 5-bit halves
@@ -455,9 +457,9 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
 
 bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool debug) {
     if (debug) {
-        cout << "Fiestal Entered" << endl;
-        cout << "Byte: " << byte << endl;
-        cout << "Key: " << key << endl;
+        // cout << "Fiestal Entered" << endl;
+        // cout << "Byte: " << byte << endl;
+        // cout << "Key: " << key << endl;
     }
 
     ///Split into halves
@@ -465,51 +467,43 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
     bitset<4> right(byte.to_ulong() & 0xF);
 
     if (debug) {
-        cout << "Left: " << left << endl;
-        cout << "Right: " << right << endl;
+        // cout << "Left: " << left << endl;
+        // cout << "Right: " << right << endl;
     }
-
     //Starting Step F(R, SK)
-
     // Perform Expansion Permutation
     bitset<8> expanded_byte = expand(right);
 
-
     if (debug)
     {
-        cout << "Expanded Byte: " << expanded_byte << endl;
+        // cout << "Expanded Byte: " << expanded_byte << endl;
     }
-
-
 
     // Perform Key Mixing
     //Break out into named bits and do XOR
     bitset<8> mixed_byte = key_mix(expanded_byte, key);
 
 
-
     if (debug) {
-        cout << "Key Mixing done" << endl;
-        cout << "Expanded Byte: " << expanded_byte << endl;
-        cout << "Key: " << key << endl;
-        cout << "Mixed Byte: " << mixed_byte << endl;
+        // cout << "Key Mixing done" << endl;
+        // cout << "Expanded Byte: " << expanded_byte << endl;
+        // cout << "Key: " << key << endl;
+        // cout << "Mixed Byte: " << mixed_byte << endl;
     }
-
     //Do S-Box Substitution Next
     bitset<4> sbox_result = sbox_sub(mixed_byte, debug);
 
     if (debug) {
-        cout << "S-Box Substitution Complete" << endl;
-        cout << "S-Box Result: " << sbox_result << endl;
+        // cout << "S-Box Substitution Complete" << endl;
+        // cout << "S-Box Result: " << sbox_result << endl;
     }
-
     //Perform Permutation (P4)
 
     bitset<4> permuted_byte = 0b0000;
     permuted_byte[3] = sbox_result[2];
     permuted_byte[2] = sbox_result[0];
     permuted_byte[1] = sbox_result[1];
-    permuted_byte[0] = sbox_result[2];
+    permuted_byte[0] = sbox_result[3];
 
     if (debug) {
         cout << "P4 Permutation: " << permuted_byte << endl;
@@ -544,234 +538,4 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
     return new_byte;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-// bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool debug) {
-//     if (debug) {
-//         cout << "Fiestal Function Entered" << endl;
-//         cout << "Byte: " << byte << endl;
-//         cout << "Key: " << key << endl;
-//     }
-
-//     ///Split into halves
-//     bitset<4> left(byte.to_ulong() >> 4);
-//     bitset<4> right(byte.to_ulong() & 0xF);
-
-//     if (debug) {
-//         cout << "Left: " << left << endl;
-//         cout << "Right: " << right << endl;
-//     }
-
-//     //Starting Step F(R, SK)
-
-//     // Perform Expansion Permutation
-//     bitset<8> expanded_byte = expand(right);
-
-
-//     if (debug)
-//     {
-//         cout << "Expanded Byte: " << expanded_byte << endl;
-//     }
-
-
-
-//     // Perform Key Mixing
-//     //Break out into named bits and do XOR
-//     bitset<8> mixed_byte = key_mix(expanded_byte, key);
-
-
-
-//     if (debug) {
-//         cout << "Perfoming Key Mixing" << endl;
-//         cout << "Expanded Byte: " << expanded_byte << endl;
-//         cout << "Key: " << key << endl;
-//         cout << "Mixed Byte: " << mixed_byte << endl;
-//     }
-
-
-//     // Break mixed byte into named bits
-//     bitset<1> n1(expanded_byte[0] ? 1 : 0);
-//     bitset<1> n2(expanded_byte[1] ? 1 : 0);
-//     bitset<1> n3(expanded_byte[2] ? 1 : 0);
-//     bitset<1> n4(expanded_byte[3] ? 1 : 0);
-//     bitset<1> n5(expanded_byte[4] ? 1 : 0);
-//     bitset<1> n6(expanded_byte[5] ? 1 : 0);
-//     bitset<1> n7(expanded_byte[6] ? 1 : 0);
-//     bitset<1> n8(expanded_byte[7] ? 1 : 0);
-
-//     //Break key into named bits
-//     bitset<1> k11(key[0] ? 1 : 0);
-//     bitset<1> k12(key[1] ? 1 : 0);
-//     bitset<1> k13(key[2] ? 1 : 0);
-//     bitset<1> k14(key[3] ? 1 : 0);
-//     bitset<1> k15(key[4] ? 1 : 0);
-//     bitset<1> k16(key[5] ? 1 : 0);
-//     bitset<1> k17(key[6] ? 1 : 0);
-//     bitset<1> k18(key[7] ? 1 : 0);
-
-
-//     // Perform XOR
-//     bitset<1> p_0_0 = n4 ^ k11;
-//     bitset<1> p_0_1 = n1 ^ k12;
-//     bitset<1> p_0_2 = n2 ^ k13;
-//     bitset<1> p_0_3 = n3 ^ k14;
-//     bitset<1> p_1_0 = n2 ^ k15;
-//     bitset<1> p_1_1 = n3 ^ k16;
-//     bitset<1> p_1_2 = n4 ^ k17;
-//     bitset<1> p_1_3 = n1 ^ k18;
-
-//     Perform S - Box Substitution
-
-//         if (debug) {
-//             cout << "XOR Result: " << p_0_0 << p_0_1 << p_0_2 << p_0_3 << p_1_0 << p_1_1 << p_1_2 << p_1_3 << endl;
-//         }
-
-//     //First make 2 bit numbers 1,4 make row, 2,3 make column
-
-//     bitset<2> s0_row;
-//     bitset<2> s0_col;
-//     bitset<2> s1_row;
-//     bitset<2> s1_col;
-
-//     s0_row[1] = p_0_0[0];
-//     s0_row[0] = p_0_3[0];
-
-//     s0_col[1] = p_0_1[0];
-//     s0_col[0] = p_0_2[0];
-
-//     s1_row[1] = p_1_0[0];
-//     s1_row[0] = p_1_3[0];
-
-//     s1_col[1] = p_1_1[0];
-//     s1_col[0] = p_1_2[0];
-
-
-//     if (debug) {
-//         cout << "S0 Row: " << s0_row << endl;
-//         cout << "S0 Col: " << s0_col << endl;
-//         cout << "S1 Row: " << s1_row << endl;
-//         cout << "S1 Col: " << s1_col << endl;
-//     }
-
-//     Perform S - Box Substitution
-//         bitset<2> s0_result;
-//     bitset<2> s1_result;
-
-//     if (debug) {
-//         cout << "Performing S-Box Substitution" << endl;
-//     }
-
-//     //S0
-//     if (s0_col == 0) {
-//         if (s0_row == 0) { s0_result = 0b01; }
-//         else if (s0_row == 1) { s0_result = 0b11; }
-//         else if (s0_row == 2) { s0_result = 0b00; }
-//         else if (s0_row == 3) { s0_result = 0b11; }
-//     }
-//     else if (s0_col == 1) {
-//         if (s0_row == 0) { s0_result = 0b00; }
-//         else if (s0_row == 1) { s0_result = 0b10; }
-//         else if (s0_row == 2) { s0_result = 0b10; }
-//         else if (s0_row == 3) { s0_result = 0b01; }
-//     }
-//     else if (s0_col == 2) {
-//         if (s0_row == 0) { s0_result = 0b11; }
-//         else if (s0_row == 1) { s0_result = 0b01; }
-//         else if (s0_row == 2) { s0_result = 0b01; }
-//         else if (s0_row == 3) { s0_result = 0b11; }
-//     }
-//     else if (s0_col == 3) {
-//         if (s0_row == 0) { s0_result = 0b10; }
-//         else if (s0_row == 1) { s0_result = 0b00; }
-//         else if (s0_row == 2) { s0_result = 0b11; }
-//         else if (s0_row == 3) { s0_result = 0b10; }
-//     }
-//     else {
-//         cerr << "Error: S-Box Substitution (S0)" << endl;
-//         exit(1);
-//     }
-
-//     //S1
-
-//     if (s1_col == 0) {
-//         if (s1_row == 0) { s1_result = 0b00; }
-//         else if (s1_row == 1) { s1_result = 0b10; }
-//         else if (s1_row == 2) { s1_result = 0b11; }
-//         else if (s1_row == 3) { s1_result = 0b10; }
-//     }
-//     else if (s1_col == 1) {
-//         if (s1_row == 0) { s1_result = 0b01; }
-//         else if (s1_row == 1) { s1_result = 0b00; }
-//         else if (s1_row == 2) { s1_result = 0b00; }
-//         else if (s1_row == 3) { s1_result = 0b01; }
-//     }
-//     else if (s1_col == 2) {
-//         if (s1_row == 0) { s1_result = 0b10; }
-//         else if (s1_row == 1) { s1_result = 0b01; }
-//         else if (s1_row == 2) { s1_result = 0b01; }
-//         else if (s1_row == 3) { s1_result = 0b00; }
-//     }
-//     else if (s1_col == 3) {
-//         if (s1_row == 0) { s1_result = 0b11; }
-//         else if (s1_row == 1) { s1_result = 0b11; }
-//         else if (s1_row == 2) { s1_result = 0b00; }
-//         else if (s1_row == 3) { s1_result = 0b11; }
-//     }
-//     else {
-//         cerr << "Error: S-Box Substitution (S1)" << endl;
-//         exit(1);
-//     }
-
-//     if (debug) {
-//         cout << "S-Box Substitution Complete" << endl;
-//         cout << "S0 Result: " << s0_result << endl;
-//         cout << "S1 Result: " << s1_result << endl;
-//     }
-
-
-//     //Permutation Step
-
-//     //Combine S0 and S1 into 4 bits
-//     //Do P4 Permutation
-//     bitset<4> sbox_result = 0b0000;
-//     sbox_result[0] = s1_result[0];
-//     sbox_result[1] = s1_result[1];
-//     sbox_result[2] = s0_result[0];
-//     sbox_result[3] = s0_result[1];
-
-//     if (debug) {
-//         cout << "S-Box Result: " << sbox_result << endl;
-//         cout << "Performing P4 Permutation" << endl;
-//     }
-
-//     bitset<8> p4_result = 0b0000;
-
-//     p4_result[3] = sbox_result[2];
-//     p4_result[2] = sbox_result[0];
-//     p4_result[1] = sbox_result[1];
-//     p4_result[0] = sbox_result[3];
-
-//     // if (debug) {
-//     cout << "P4 Result: " << p4_result << endl;
-// }
-
-// // F(R, SK) Complete
-
-// // Now perform: L XOR F(R,SK),R)
-
-// bitset<8> xor_result = 0b00000000;
-
-
-
-
-// }
 
