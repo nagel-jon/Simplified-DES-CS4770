@@ -62,9 +62,9 @@ std::bitset<8> key_mix(const std::bitset<8>& byte, const std::bitset<8>& key) {
     //P[1,0-3] second row - goes into S1
 
         // Print the results for each bit position
-    std::cout << "Byte: " << byte << "\n";
-    std::cout << "Key:  " << key << "\n";
-    std::cout << "Result: " << result << "\n";
+    // std::cout << "Byte: " << byte << "\n";
+    // std::cout << "Key:  " << key << "\n";
+    // std::cout << "Result: " << result << "\n";
 
     return result;
 }
@@ -90,7 +90,7 @@ std::bitset<4> sbox_sub(std::bitset<8> byte, bool debug) {
     s1_row[0] = byte[7];
 
     if (debug) {
-        cout << "Performing S-Box Substitution" << endl;
+        //cout << "Performing S-Box Substitution" << endl;
     }
 
     //S0
@@ -177,17 +177,17 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
     bitset<8> k2 = 0b00000000;
     if (debug) {
         cout << "Starting DES Decryption" << endl;
-        cout << "Key: " << key << endl << endl;
+        //cout << "Key: " << key << endl << endl;
         cout << "Key (int): " << key.to_ulong() << endl;
     }
 
     //Generate keys
     keygen(key, k1, k2, debug);
     if (debug) {
-        cout << "Keygen Complete" << endl;
-        cout << "Key 1: " << k1 << endl;
+        //cout << "Keygen Complete" << endl;
+        //cout << "Key 1: " << k1 << endl;
         cout << "Key 1 (int): " << k1.to_ulong() << endl;
-        cout << "Key 2: " << k2 << endl;
+        //cout << "Key 2: " << k2 << endl;
         cout << "Key 2 (int): " << k2.to_ulong() << endl << endl;
     }
 
@@ -227,6 +227,11 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         // Perform Fiestal Function (round 1)
         bitset<8> fiestal_byte = fiestal(ip_byte, k2, debug);
 
+        if (debug) {
+            cout << "Fiestal Round 1 Done: " << fiestal_byte << endl;
+            cout << static_cast<int>(fiestal_byte.to_ulong()) << endl;
+        }
+
         // Perform Nibble Swap
 
         //NEEDS CHANGED AFTER FIESTAL
@@ -240,10 +245,6 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         nibble_swap_byte[1] = fiestal_byte[5];
         nibble_swap_byte[0] = fiestal_byte[4];
 
-        if (debug) {
-            cout << "Fiestal Round 1 Done: " << fiestal_byte << endl;
-            cout << static_cast<int>(fiestal_byte.to_ulong()) << endl;
-        }
 
         if (debug) {
             cout << "Nibble Swap Performed" << endl;
@@ -257,22 +258,48 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         // Perform Fiestal Function (round 2)
         bitset<8> fiestal_byte2 = fiestal(nibble_swap_byte, k1, debug);
 
+        if (debug) {
+            cout << "Fiestal Round 2 Done: " << fiestal_byte2 << endl;
+            cout << static_cast<int>(fiestal_byte2.to_ulong()) << endl;
+        }
+
         // Perform Inverse Initial Permutation
         bitset<8> inverse_ip_byte = 0b00000000;
-        inverse_ip_byte[7] = fiestal_byte2[3];
-        inverse_ip_byte[6] = fiestal_byte2[2];
-        inverse_ip_byte[5] = fiestal_byte2[1];
-        inverse_ip_byte[4] = fiestal_byte2[0];
+        // inverse_ip_byte[7] = fiestal_byte2[3];
+        // inverse_ip_byte[6] = fiestal_byte2[2];
+        // inverse_ip_byte[5] = fiestal_byte2[1];
+        // inverse_ip_byte[4] = fiestal_byte2[0];
+        // inverse_ip_byte[3] = nibble_swap_byte[3];
+        // inverse_ip_byte[2] = nibble_swap_byte[2];
+        // inverse_ip_byte[1] = nibble_swap_byte[1];
+        // inverse_ip_byte[0] = nibble_swap_byte[0];
+
+        inverse_ip_byte[7] = fiestal_byte2[7];
+        inverse_ip_byte[6] = fiestal_byte2[6];
+        inverse_ip_byte[5] = fiestal_byte2[5];
+        inverse_ip_byte[4] = fiestal_byte2[4];
         inverse_ip_byte[3] = nibble_swap_byte[3];
         inverse_ip_byte[2] = nibble_swap_byte[2];
         inverse_ip_byte[1] = nibble_swap_byte[1];
         inverse_ip_byte[0] = nibble_swap_byte[0];
 
+
+
         if (debug) {
-            //cout << "Inverse Initial Permutation: " << inverse_ip_byte << endl;
+            cout << "Inverse Initial Permutation: " << inverse_ip_byte << endl;
+            cout << "Inverse IP: " << static_cast<int>(inverse_ip_byte.to_ulong()) << endl;
         }
 
         decrypted_vector.push_back(static_cast<unsigned char>(inverse_ip_byte.to_ullong()));
+
+        if (debug) {
+            cout << "Decrypted Byte: " << static_cast<int>(inverse_ip_byte.to_ulong()) << endl;
+            cout << "Decrypted Byte: " << inverse_ip_byte << endl;
+            cout << endl;
+            cout << "ASCII: " << static_cast<unsigned char>(inverse_ip_byte.to_ullong()) << endl;
+        }
+
+        cout << endl;
 
     }
     return decrypted_vector;
@@ -319,6 +346,7 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
         // cout << "Before Permutation: " << endl << key << endl;
         // cout << "After Permutation: " << endl << key_permuted << endl << endl;
         // cout << "Splitting into two 5 bit halves" << endl;
+        cout << "P10: " << static_cast<int>(key_permuted.to_ulong()) << endl;
     }
 
     // Split key into two 5-bit halves
@@ -376,13 +404,11 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
         // cout << "After P8:" << endl;
         // cout << key1 << endl << endl;
     }
-
     // Perform second left shift
     if (debug) {
         // cout << "Performing Double Left Shift" << endl;
         // cout << "Before Shift 1: " << keyhalf_1 << " " << keyhalf_2 << endl;
     }
-
     temp = bitset<1>(keyhalf_1[4]);
     keyhalf_1 <<= 1;
     keyhalf_1[0] = temp[0];
@@ -416,7 +442,6 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
     key2[1] = keyhalf_2[0];
     key2[0] = keyhalf_2[1];
 
-
     if (debug) {
         // cout << "LS (2 of 2) Performed" << endl;
         // cout << "Key Half 1: " << keyhalf_1 << endl;
@@ -430,7 +455,7 @@ void keygen(const bitset<10>& key, bitset<8>& key1, bitset<8>& key2, bool debug)
 
 bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool debug) {
     if (debug) {
-        cout << "Fiestal Function Entered" << endl;
+        cout << "Fiestal Entered" << endl;
         cout << "Byte: " << byte << endl;
         cout << "Key: " << key << endl;
     }
@@ -464,7 +489,7 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
 
 
     if (debug) {
-        cout << "Perfoming Key Mixing" << endl;
+        cout << "Key Mixing done" << endl;
         cout << "Expanded Byte: " << expanded_byte << endl;
         cout << "Key: " << key << endl;
         cout << "Mixed Byte: " << mixed_byte << endl;
@@ -486,8 +511,16 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
     permuted_byte[1] = sbox_result[1];
     permuted_byte[0] = sbox_result[2];
 
+    if (debug) {
+        cout << "P4 Permutation: " << permuted_byte << endl;
+    }
+
     //XOR Left half with permuted byte
     bitset<4> new_left = left ^ permuted_byte;
+
+    if (debug) {
+        cout << "New Left (After Xor): " << new_left << endl;
+    }
 
     //Combine left and right
     bitset<8> new_byte = 0b00000000;
@@ -502,10 +535,10 @@ bitset<8> fiestal(const std::bitset<8>& byte, const std::bitset<8>& key, bool de
     new_byte[0] = right[0];
 
     if (debug) {
-        cout << "Permutation: " << permuted_byte << endl;
-        cout << "New Left: " << new_left << endl;
-        cout << "New Byte: " << new_byte << endl;
-        cout << "Fiestal Function Complete" << endl;
+        // cout << "New Byte: " << new_byte << endl;
+        // cout << "New Left: " << new_left << endl;
+        // cout << "New Byte: " << new_byte << endl;
+        // cout << "Fiestal Function Complete" << endl;
     }
 
     return new_byte;
