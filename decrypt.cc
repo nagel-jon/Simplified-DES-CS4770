@@ -22,16 +22,33 @@ void check_args(int argc, char* argv[], bool debug) {
     }
 }
 
-vector<unsigned char> get_decrypt_string(const string& filename, bool debug) {
-    ifstream file(filename, ios::binary);
-    if (!file) {
-        cerr << "Error: unable to open input file: " << filename << endl;
-        exit(1);
+// vector<unsigned char> get_decrypt_string(const string& filename, bool debug) {
+//     ifstream file(filename, ios::binary);
+//     if (!file) {
+//         cerr << "Error: unable to open input file: " << filename << endl;
+//         exit(1);
+//     }
+//     vector<unsigned char> fileContent((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
+//     file.close();
+//     return fileContent;
+// }
+
+vector<unsigned char> get_decrypt_string(bool debug) {
+    // Read from stdin
+    vector<unsigned char> inputBuffer;
+    char byte;
+
+    while (cin.get(byte)) {
+        inputBuffer.push_back(static_cast<unsigned char>(byte));
     }
-    vector<unsigned char> fileContent((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
-    file.close();
-    return fileContent;
+
+    if (debug) {
+        cout << "Read " << inputBuffer.size() << " bytes from stdin." << endl;
+    }
+
+    return inputBuffer;
 }
+
 
 std::bitset<8> expand(std::bitset<4> half) {
     std::bitset<8> expanded = 0b00000000;
@@ -62,10 +79,10 @@ std::bitset<8> key_mix(const std::bitset<8>& byte, const std::bitset<8>& key) {
     //P[1,0-3] second row - goes into S1
 
         // Print the results for each bit position
-    std::cout << "Key Mixing" << "\n";
-    std::cout << "Byte: " << byte << "\n";
-    std::cout << "Key:  " << key << "\n";
-    std::cout << "Result: " << result << "\n";
+    // std::cout << "Key Mixing" << "\n";
+    // std::cout << "Byte: " << byte << "\n";
+    // std::cout << "Key:  " << key << "\n";
+    // std::cout << "Result: " << result << "\n";
 
     return result;
 }
@@ -186,6 +203,8 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         cout << "Key (int): " << key.to_ulong() << endl;
     }
 
+    cerr << "p10: " << key.to_ullong() << endl;
+
     //Generate keys
     keygen(key, k1, k2, debug);
     if (debug) {
@@ -195,6 +214,8 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         //cout << "Key 2: " << k2 << endl;
         cout << "Key 2 (int): " << k2.to_ulong() << endl << endl;
     }
+    cerr << "k1: " << k1.to_ullong() << endl;
+    cerr << "k2: " << k2.to_ullong() << endl;
 
     //Do Initial Permutation (IP)
     if (debug) {
@@ -212,6 +233,7 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
             i++;
 
         }
+        cerr << "decrypting byte #" << i << " with value: " << static_cast<int>(encrypted_byte.to_ulong()) << endl;
 
         // Perform Initial Permutation
         bitset<8> ip_byte = 0b00000000;
@@ -228,7 +250,7 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
             //cout << "Initial Permutation: " << ip_byte << endl;
             cout << "IP : " << static_cast<int>(ip_byte.to_ulong()) << endl;
         }
-
+        cerr << "ip: " << static_cast<int>(ip_byte.to_ulong()) << endl;
         // Perform Fiestal Function (round 1)
         bitset<8> fiestal_byte = fiestal(ip_byte, k2, debug);
 
@@ -251,6 +273,7 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
         nibble_swap_byte[0] = fiestal_byte[4];
 
 
+        cerr << "fk1: " << static_cast<int>(nibble_swap_byte.to_ulong()) << endl;
         if (debug) {
             // cout << "Nibble Swap Performed" << endl;
             // cout << "Before: " << fiestal_byte << endl;
@@ -271,6 +294,7 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
             // cout << "Fiestal Round 2 Done: " << fiestal_byte2 << endl;
             cout << "fk2: " << static_cast<int>(fiestal_byte2.to_ulong()) << endl;
         }
+        cerr << "fk2: " << static_cast<int>(fiestal_byte2.to_ulong()) << endl;
 
         // Perform Inverse Initial Permutation
         bitset<8> inverse_ip_byte = 0b00000000;
@@ -292,7 +316,7 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
 
         decrypted_vector.push_back(static_cast<unsigned char>(inverse_ip_byte.to_ullong()));
         nums.push_back(static_cast<int>(inverse_ip_byte.to_ulong()));
-        cerr << inverse_ip_byte.to_ulong() << " ";
+        //cerr << inverse_ip_byte.to_ulong() << " ";
 
         if (debug) {
             // cout << "Decrypted Byte: " << static_cast<int>(inverse_ip_byte.to_ulong()) << endl;
@@ -301,7 +325,7 @@ vector<unsigned char> DES_decrypt(const vector<unsigned char>& encrypted_vector,
             // cout << "ASCII: " << static_cast<unsigned char>(inverse_ip_byte.to_ullong()) << endl;
         }
 
-        cout << endl;
+        //cout << endl;
 
     }
     return decrypted_vector;

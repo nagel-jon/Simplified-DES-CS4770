@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     // Global Variables
-    bool debug = true;
+    bool debug = false;
     vector<unsigned char> encrypted_vector;
 
     if (debug) {
@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     // Check for correct number, format of args
     check_args(argc, argv, debug);
     // Open input file
-    encrypted_vector = get_decrypt_string("decrypt_in 1.txt", debug);
+    encrypted_vector = get_decrypt_string(debug);
 
 
     //Cast Key to bitset
@@ -44,10 +44,10 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    for (unsigned char byte : decrypted_vector) {
-        //cout << byte;
-        cout << byte << " ";
-    }
+    // for (unsigned char byte : decrypted_vector) {
+    //     //cout << byte;
+    //     cout << byte << " ";
+    // }
 
     outfile.close();
 
