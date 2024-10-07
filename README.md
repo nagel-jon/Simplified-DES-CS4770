@@ -21,4 +21,4 @@ The program expects a **secret key** to be passed as the first and only command-
 
 Example command:
 ```bash
-./program 0x36C
+./decrypter 0x36C < 'decrypt_in 1.txt'
